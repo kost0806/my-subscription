@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start: 8, 8, 16;
+  --background-end: 15, 15, 26;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    180deg,
+    rgb(var(--background-start)) 0%,
+    rgb(var(--background-end)) 100%
+  );
+  min-height: 100vh;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Particle animation */
+@keyframes drift {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(0);
+    opacity: 0;
+  }
+}
