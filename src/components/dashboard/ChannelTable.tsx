@@ -63,7 +63,7 @@ export default function ChannelTable({ channels }: ChannelTableProps) {
           placeholder="채널 검색..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="bg-white/10 border border-white/20 rounded-xl px-4 py-2 text-sm text-white placeholder-white/30 outline-none focus:border-white/40 transition-colors w-48"
+          className="bg-white/10 border border-white/20 rounded-xl px-4 py-2 text-sm text-white placeholder-white/30 outline-none focus:border-white/40 transition-colors w-full sm:w-48"
         />
       </div>
 
@@ -95,42 +95,45 @@ export default function ChannelTable({ channels }: ChannelTableProps) {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: idx * 0.03 }}
-            className="flex items-center gap-4 p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-colors group"
+            className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-colors group"
           >
-            <span className="text-white/30 text-sm w-6 text-right shrink-0">
-              {idx + 1}
-            </span>
+            {/* Top row: rank + avatar + name */}
+            <div className="flex items-center gap-3 sm:contents">
+              <span className="text-white/30 text-sm w-6 text-right shrink-0">
+                {idx + 1}
+              </span>
 
-            {/* Avatar */}
-            {channel.thumbnailUrl ? (
-              <Image
-                src={channel.thumbnailUrl}
-                alt={channel.channelName}
-                width={40}
-                height={40}
-                className="w-10 h-10 rounded-full object-cover shrink-0"
-                unoptimized
-              />
-            ) : (
-              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0 text-white/60 font-bold">
-                {channel.channelName.charAt(0)}
+              {/* Avatar */}
+              {channel.thumbnailUrl ? (
+                <Image
+                  src={channel.thumbnailUrl}
+                  alt={channel.channelName}
+                  width={40}
+                  height={40}
+                  className="w-10 h-10 rounded-full object-cover shrink-0"
+                  unoptimized
+                />
+              ) : (
+                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0 text-white/60 font-bold">
+                  {channel.channelName.charAt(0)}
+                </div>
+              )}
+
+              {/* Channel name + date */}
+              <div className="flex-1 min-w-0">
+                <p className="font-medium text-white truncate group-hover:text-white transition-colors">
+                  {channel.channelName}
+                </p>
+                <p className="text-xs text-white/40">
+                  {format(channel.subscribedAt, "yyyy년 M월 d일 구독", {
+                    locale: ko,
+                  })}
+                </p>
               </div>
-            )}
-
-            {/* Channel name + date */}
-            <div className="flex-1 min-w-0">
-              <p className="font-medium text-white truncate group-hover:text-white transition-colors">
-                {channel.channelName}
-              </p>
-              <p className="text-xs text-white/40">
-                {format(channel.subscribedAt, "yyyy년 M월 d일 구독", {
-                  locale: ko,
-                })}
-              </p>
             </div>
 
-            {/* Metrics */}
-            <div className="grid grid-cols-4 gap-3 shrink-0">
+            {/* Metrics: 2-col on mobile, 4-col on desktop */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 sm:shrink-0 pl-9 sm:pl-0">
               {METRICS.map((metric) => (
                 <div
                   key={metric.key}

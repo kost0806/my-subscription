@@ -27,7 +27,7 @@ export default function StatCard({
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
-      className="relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm p-6 hover:bg-white/8 transition-colors group"
+      className="relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm p-4 sm:p-6 hover:bg-white/8 transition-colors group"
     >
       {/* Gradient accent */}
       <div
@@ -47,7 +47,7 @@ export default function StatCard({
           </span>
         </div>
 
-        <div className={`text-3xl font-bold bg-gradient-to-r ${gradient} bg-clip-text text-transparent`}>
+        <div className={`text-2xl sm:text-3xl font-bold bg-gradient-to-r ${gradient} bg-clip-text text-transparent`}>
           <CountUp end={value} formatter={formatter} duration={1200} />
         </div>
 

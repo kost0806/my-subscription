@@ -111,12 +111,12 @@ export default function DashboardPage() {
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-amber-500/10 border border-amber-500/30 rounded-2xl px-5 py-3 flex items-center gap-3 text-sm"
+            className="bg-amber-500/10 border border-amber-500/30 rounded-2xl px-4 py-3 flex items-start sm:items-center gap-3 text-sm"
           >
             <span className="text-xl">💡</span>
             <div>
               <span className="text-amber-300 font-semibold">데모 데이터 표시 중</span>
-              <span className="text-amber-200/60 ml-2">
+              <span className="text-amber-200/60 sm:ml-2 block sm:inline mt-0.5 sm:mt-0">
                 YouTube API 키와 Google 로그인을 설정하면 실제 구독 데이터를 볼 수 있어요.
               </span>
             </div>
@@ -130,7 +130,7 @@ export default function DashboardPage() {
           className="flex items-center justify-between flex-wrap gap-4"
         >
           <div>
-            <h1 className="text-3xl font-black text-white">
+            <h1 className="text-2xl sm:text-3xl font-black text-white">
               {user?.displayName
                 ? `${user.displayName}의 구독 통계`
                 : "내 구독 통계"}

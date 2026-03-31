@@ -73,7 +73,7 @@ export default function ImportModal({ channels, onUpdate, onClose }: ImportModal
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
-          className="bg-dark-900 border border-white/20 rounded-3xl p-8 max-w-md w-full"
+          className="bg-dark-900 border border-white/20 rounded-3xl p-5 sm:p-8 max-w-md w-full"
           onClick={(e) => e.stopPropagation()}
         >
           <h3 className="text-xl font-bold text-white mb-2">
@@ -94,7 +94,7 @@ export default function ImportModal({ channels, onUpdate, onClose }: ImportModal
             }}
             onDragLeave={() => setDragOver(false)}
             onDrop={handleDrop}
-            className={`border-2 border-dashed rounded-2xl p-8 text-center transition-colors ${
+            className={`border-2 border-dashed rounded-2xl p-5 sm:p-8 text-center transition-colors ${
               dragOver
                 ? "border-brand-400 bg-brand-400/10"
                 : "border-white/20 hover:border-white/40"
