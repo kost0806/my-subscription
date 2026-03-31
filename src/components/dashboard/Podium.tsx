@@ -26,11 +26,11 @@ export default function Podium({ channels, metric }: PodiumProps) {
   if (top3.length === 0) return null;
 
   return (
-    <div className="flex items-end justify-center gap-3 pt-8 pb-4">
+    <div className="flex items-end justify-center gap-1 sm:gap-3 pt-8 pb-4">
       {ORDER.map((rankIdx) => {
         const rank = RANKS[rankIdx];
         const channel = top3[rankIdx];
-        if (!channel) return <div key={rankIdx} className="w-28" />;
+        if (!channel) return <div key={rankIdx} className="w-20 sm:w-28" />;
 
         const value = channel[metric.key];
 
@@ -58,12 +58,12 @@ export default function Podium({ channels, metric }: PodiumProps) {
                     alt={channel.channelName}
                     width={rankIdx === 0 ? 56 : 48}
                     height={rankIdx === 0 ? 56 : 48}
-                    className={`rounded-full border-2 ${rank.borderColor} object-cover ${rankIdx === 0 ? "w-14 h-14" : "w-12 h-12"}`}
+                    className={`rounded-full border-2 ${rank.borderColor} object-cover ${rankIdx === 0 ? "w-10 h-10 sm:w-14 sm:h-14" : "w-9 h-9 sm:w-12 sm:h-12"}`}
                     unoptimized
                   />
                 ) : (
                   <div
-                    className={`rounded-full border-2 ${rank.borderColor} ${rank.bgColor} flex items-center justify-center ${rankIdx === 0 ? "w-14 h-14" : "w-12 h-12"}`}
+                    className={`rounded-full border-2 ${rank.borderColor} ${rank.bgColor} flex items-center justify-center ${rankIdx === 0 ? "w-10 h-10 sm:w-14 sm:h-14" : "w-9 h-9 sm:w-12 sm:h-12"}`}
                   >
                     <span className="text-xl">
                       {channel.channelName.charAt(0)}
@@ -79,7 +79,7 @@ export default function Podium({ channels, metric }: PodiumProps) {
                 )}
               </div>
               <p
-                className={`font-semibold text-center leading-tight max-w-[100px] text-xs ${rankIdx === 0 ? "text-white text-sm" : "text-white/80"}`}
+                className={`font-semibold text-center leading-tight max-w-[72px] sm:max-w-[100px] text-xs ${rankIdx === 0 ? "text-white sm:text-sm" : "text-white/80"}`}
               >
                 {channel.channelName}
               </p>
@@ -96,7 +96,7 @@ export default function Podium({ channels, metric }: PodiumProps) {
               animate={{ scaleY: 1 }}
               transition={{ duration: 0.5, delay: rank.delay + 0.2, origin: "bottom" }}
               style={{ transformOrigin: "bottom" }}
-              className={`w-24 ${rank.height} ${rank.bgColor} border ${rank.borderColor} rounded-t-xl flex items-center justify-center backdrop-blur-sm relative overflow-hidden`}
+              className={`w-20 sm:w-24 ${rank.height} ${rank.bgColor} border ${rank.borderColor} rounded-t-xl flex items-center justify-center backdrop-blur-sm relative overflow-hidden`}
             >
               <div
                 className={`absolute inset-0 bg-gradient-to-t ${metric.gradient} opacity-10`}

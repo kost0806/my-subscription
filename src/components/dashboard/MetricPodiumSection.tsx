@@ -29,7 +29,7 @@ export default function MetricPodiumSection({
           <button
             key={metric.key}
             onClick={() => setActiveIdx(idx)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+            className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 ${
               activeIdx === idx
                 ? `bg-gradient-to-r ${metric.gradient} text-white shadow-lg shadow-black/20`
                 : "bg-white/5 text-white/60 hover:bg-white/10 border border-white/10"
